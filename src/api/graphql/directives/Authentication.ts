@@ -12,9 +12,8 @@ export default class AuthDirective extends SchemaDirectiveVisitor {
     GraphQLField<CallableFunction, CallableFunction> | void {
 
     const originalResolve = field.resolve || defaultFieldResolver;
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+    /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
     field.resolve = async function (...args: any): Promise<CallableFunction> {
-      /* eslint-disable @typescript-eslint/no-explicit-any */
       const context = args[2];
 
       if (!context.request.req.headers.authorization) {

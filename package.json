@@ -1,8 +1,8 @@
 {
-    "name": "node-typescript-graphql-boilerplate",
+    "name": "test-ts-node-backend",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "git@github.com:AdrianMendez1199/node-typescript-graphql-boilerplate.git",
+    "repository": "git@github.com:AdrianMendez1199/test-ts-node-backend.git",
     "author": "Adrian Mendez <mendezadrian149@gmail.com>",
     "license": "MIT",
     "scripts": {

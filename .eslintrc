@@ -1,0 +1,56 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint",
+        "import"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "rules": {
+        "no-console": [
+            "warn"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        "@typescript-eslint/no-empty-interface": 0,
+        "@typescript-eslint/explicit-function-return-type": [
+            "error"
+        ],
+        "import/order": [
+            "error",
+            {
+                "newlines-between": "always",
+                "groups": [
+                    [
+                        "builtin",
+                        "external",
+                        "internal"
+                    ],
+                    [
+                        "parent",
+                        "sibling"
+                    ],
+                    "index"
+                ]
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 120
+            }
+        ],
+        "@typescript-eslint/camelcase": 0,
+        "react/static-property-placement": 0,
+        "@typescript-eslint/no-this-alias": 0
+    }
+}
