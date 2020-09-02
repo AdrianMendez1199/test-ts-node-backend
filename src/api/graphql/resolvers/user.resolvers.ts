@@ -40,7 +40,7 @@ export default {
       }
 
       return {
-        token: generateToken(user.username)
+        token: generateToken({ username: user.username })
       }
 
     }

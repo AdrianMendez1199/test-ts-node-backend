@@ -3,14 +3,19 @@ import 'dotenv/config';
 import { AuthenticationError } from 'apollo-server';
 
 
+interface Token { 
+  payload: { username: string }
+}
+
 /**
  * this function generate tokein
  * @param {string} payload 
  */
 
-/* eslint-disable-next-line */
-export const generateToken = (payload: any): string =>
-   jwt.sign({ payload }, process.env.JWT_SECRET as string);
+export const generateToken = (payload: { username: string }): string =>
+   jwt.sign({ payload }, process.env.JWT_SECRET as string, { 
+     expiresIn: process.env.EXP_JWT_TIME
+  });
 
 
 /**
@@ -18,10 +23,9 @@ export const generateToken = (payload: any): string =>
  * @param {string} token 
  */
 
-/* eslint-disable-next-line @typescript-eslint/ban-types */
-export function decodeToken(token: string): string | object {
+ export function decodeToken(token: string): Token  {
   try {
-    return jwt.verify(token, process.env.JWT_SECRET as string);
+    return jwt.verify(token, process.env.JWT_SECRET as string) as Token;
   } catch (e) {
     throw new AuthenticationError('Unauthenticated');
   }
