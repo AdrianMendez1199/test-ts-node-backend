@@ -1,4 +1,7 @@
+import { AuthenticationError } from 'apollo-server';
+import bcrypt from 'bcrypt';
 import { User } from '@entity/User';
+import { generateToken } from '@utils/jwt';
 
 export default {
   Query: {},
@@ -19,6 +22,27 @@ export default {
       const user = User.create(args.data);
       await user.save();
       return user;
+    },
+
+    async signIn(_: void, args: { data: { username: string, password: string } }): Promise<{ token: string }> {
+
+      const user = await User.
+        findOne({ where: { username: args.data.username } })
+
+      if (!user) {
+        throw new AuthenticationError('Invalid Credentials');
+      }
+
+      const passwordMatch = await bcrypt.compare(args.data.password, user.password);
+
+      if (!passwordMatch) {
+        throw new AuthenticationError('Invalid Credentials');
+      }
+
+      return {
+        token: generateToken(user.username)
+      }
+
     }
   }
 }

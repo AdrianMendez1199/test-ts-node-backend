@@ -3,11 +3,13 @@ import {
     PrimaryGeneratedColumn,
     Column,
     BaseEntity,
-    BeforeInsert
+    BeforeInsert,
+    Unique
 } from 'typeorm';
 import bcrypt from 'bcrypt';
 
 @Entity()
+@Unique(['username'])
 export class User extends BaseEntity {
 
     @PrimaryGeneratedColumn()
