@@ -6,7 +6,7 @@
     "author": "Adrian Mendez <mendezadrian149@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "lint": "eslint  --ext .ts --fix .",
+        "lint": "eslint  --ext .ts .",
         "clean": "rimraf dist",
         "transpile": "tsc",
         "build": "npm-run-all clean transpile copy-gql",
