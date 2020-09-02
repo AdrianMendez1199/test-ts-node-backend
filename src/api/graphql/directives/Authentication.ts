@@ -1,6 +1,6 @@
 import { AuthenticationError, SchemaDirectiveVisitor } from 'apollo-server';
 import { defaultFieldResolver, GraphQLField } from 'graphql';
-import { generateToken } from '@utils/jwt';
+import { decodeToken } from '@utils/jwt';
 
 export default class AuthDirective extends SchemaDirectiveVisitor {
 
@@ -19,9 +19,11 @@ export default class AuthDirective extends SchemaDirectiveVisitor {
       if (!context.request.req.headers.authorization) {
         throw new AuthenticationError('Not authenticate');
       }
+      
+      const info = decodeToken(context.request.req.headers.authorization);
 
       // adding decode token to context
-      context.request.auth = generateToken(context.request.req.headers.authorization);
+      context.request.auth = info.payload.username;
 
       return await originalResolve.apply(this, args);
     };
