@@ -16,7 +16,6 @@ export default {
      * @returns {Promise<User>}
      */
     async createUser(_: void, args: { data: User }): Promise<User> {
-      console.log(args.data);
       const user = User.create(args.data);
       await user.save();
       return user;
