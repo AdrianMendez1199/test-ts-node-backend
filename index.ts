@@ -18,7 +18,7 @@ import AuthDirective from '@api/graphql/directives/Authentication';
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       synchronize: true,
-      logging: false,
+      logging: process.env.NODE_ENV !== 'production',
       entities: [__dirname + '/entity/*{.js,.ts}'],
       extra: { max: 10, min: 1 },
     })

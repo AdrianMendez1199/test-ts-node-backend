@@ -4,12 +4,22 @@ export default {
   Query: {},
 
   Mutation: {
+    /**
+     * create user
+     * @param {void} _ 
+     * @param {Object} args 
+     * @property {User} args.data 
+     * @property {string} args.data.username 
+     * @property {string} args.data.firstname 
+     * @property {string} args.data.lastname 
+     * @property {string} args.data.password 
+     * @returns {Promise<User>}
+     */
     async createUser(_: void, args: { data: User }): Promise<User> {
-      const user = new User();
-      user.firstName = args.data.firstName;
-      user.lastName = args.data.lastName;
-      const response = await user.save();
-      return response;
+      console.log(args.data);
+      const user = User.create(args.data);
+      await user.save();
+      return user;
     }
   }
 }
