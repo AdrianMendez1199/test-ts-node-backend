@@ -8,9 +8,8 @@ import { AuthenticationError } from 'apollo-server';
  * @param {string} payload 
  */
 
-/* eslint-disable @typescript-eslint/no-explicit-any  */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types  */
-export const getToken = (payload: any): string =>
+/* eslint-disable-next-line */
+export const generateToken = (payload: any): string =>
    jwt.sign({ payload }, process.env.JWT_SECRET as string);
 
 
