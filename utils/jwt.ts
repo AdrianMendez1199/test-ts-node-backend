@@ -14,7 +14,7 @@ interface Token {
 
 export const generateToken = (payload: { username: string }): string =>
    jwt.sign({ payload }, process.env.JWT_SECRET as string, { 
-     expiresIn: process.env.EXP_JWT_TIME
+     expiresIn: Number(process.env.EXP_JWT_TIME) || '24h'
   });
 
 
@@ -25,6 +25,7 @@ export const generateToken = (payload: { username: string }): string =>
 
  export function decodeToken(token: string): Token  {
   try {
+    token = token.replace('Bearer ', ''); 
     return jwt.verify(token, process.env.JWT_SECRET as string) as Token;
   } catch (e) {
     throw new AuthenticationError('Unauthenticated');

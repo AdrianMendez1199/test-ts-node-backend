@@ -1,6 +1,7 @@
 import { AuthenticationError, SchemaDirectiveVisitor } from 'apollo-server';
 import { defaultFieldResolver, GraphQLField } from 'graphql';
 import { decodeToken } from '@utils/jwt';
+import { User } from '@entity/User';
 
 export default class AuthDirective extends SchemaDirectiveVisitor {
 
@@ -19,11 +20,23 @@ export default class AuthDirective extends SchemaDirectiveVisitor {
       if (!context.request.req.headers.authorization) {
         throw new AuthenticationError('Unauthenticated');
       }
-      
+
       const info = decodeToken(context.request.req.headers.authorization);
 
-      // adding decode token to context
-      context.request.auth = info.payload.username;
+      // TODO SAVe info in redis
+      const userInfo = await User.findOne({ username: info.payload.username });
+    
+      if(!userInfo) {
+        throw new AuthenticationError('Unauthenticated');
+      }
+
+      // removing password from user information
+      const { password: _, ...rest } = userInfo;
+      
+      // adding user info to context
+      context.request.auth = rest;
+
+
 
       return await originalResolve.apply(this, args);
     };

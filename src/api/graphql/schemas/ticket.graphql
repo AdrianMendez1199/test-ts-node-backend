@@ -28,4 +28,3 @@ input TicketInput {
     
 }
 
-directive @isAuthenticated on QUERY | FIELD | FIELD_DEFINITION
