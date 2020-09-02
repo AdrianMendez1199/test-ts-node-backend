@@ -1,0 +1,31 @@
+
+type Ticket {
+    
+    title: String!
+
+    description: String!
+
+    assignedTo: User! 
+    
+    createdBy: User!
+   
+}
+
+
+
+type Mutation {
+    createTicket(data: TicketInput!): Ticket! @isAuthenticated
+}
+
+
+input TicketInput { 
+     
+    title: String!
+
+    description: String!
+
+    assignedTo: ID! 
+    
+}
+
+directive @isAuthenticated on QUERY | FIELD | FIELD_DEFINITION

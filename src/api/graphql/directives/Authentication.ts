@@ -17,7 +17,7 @@ export default class AuthDirective extends SchemaDirectiveVisitor {
       const context = args[2];
 
       if (!context.request.req.headers.authorization) {
-        throw new AuthenticationError('Not authenticate');
+        throw new AuthenticationError('Unauthenticated');
       }
       
       const info = decodeToken(context.request.req.headers.authorization);

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
 import { User } from '@entity/User';
 
 
@@ -12,7 +12,7 @@ export enum TicketState {
 
 
 @Entity()
-export class Ticket {
+export class Ticket extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

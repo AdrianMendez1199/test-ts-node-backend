@@ -4,7 +4,7 @@ import 'reflect-metadata';
 import 'dotenv/config';
 import 'module-alias/register';
 import { typeDefs, resolvers } from '@api/graphql';
-import AuthDirective from '@api/graphql/directives/Authentication';
+import isAuthenticated from '@api/graphql/directives/Authentication';
 
 
 // Db Connection on start server
@@ -30,7 +30,8 @@ import AuthDirective from '@api/graphql/directives/Authentication';
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  schemaDirectives: { AuthDirective },
+  schemaDirectives: { isAuthenticated },
+  context: (request): Record<string, unknown> => ({ request }),
 });
 
 
