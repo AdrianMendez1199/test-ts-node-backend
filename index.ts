@@ -23,7 +23,7 @@ import AuthDirective from '@api/graphql/directives/Authentication';
       extra: { max: 10, min: 1 },
     })
   } catch (error) {
-    process.exit(0);
+    process.exit(1);
   }
 })();
 
