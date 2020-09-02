@@ -6,7 +6,7 @@
     "password": "docker",
     "database": "example",
     "synchronize": true,
-    "logging": false,
+    "logging": true,
     "entities": [
         "./entity/**/*.ts"
     ],
