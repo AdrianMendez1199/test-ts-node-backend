@@ -35,7 +35,6 @@ const server = new ApolloServer({
 
 
 server.listen().then(({ url }): void => {
-  /* eslint-disable no-console */
+  /* eslint-disable-next-line no-console */
   console.log(`Server runing on ${url}`);
-  /* eslint-disable no-console */
 })

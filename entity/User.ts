@@ -17,14 +17,11 @@ export class User extends BaseEntity {
     firstName: string;
 
     @Column()
-    username: string;
-
-
-    @Column()
     lastName: string;
 
+
     @Column()
-    age: number;
+    username: string;
 
 
     @Column()
