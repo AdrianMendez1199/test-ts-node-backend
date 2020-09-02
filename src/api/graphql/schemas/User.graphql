@@ -2,12 +2,19 @@ type User {
   
   firstName: String!
 
-  age: Int!
-
+  username: String!
+ 
+  password: String!
+  
   lastName: String!
 }
 
 
+type UserSignInPayload {
+
+  token: String!
+
+}
 
 type Query {
   
@@ -18,7 +25,19 @@ type Query {
 
 
 type Mutation {
-  createUser(data: userInput!): User!
+
+  signUp(data: userInput!): User!
+
+  signIn(data: singinInput!): UserSignInPayload!
+
+}
+
+
+input singinInput {
+  
+  username: String!
+  
+  password: string!
 }
 
 
@@ -26,7 +45,9 @@ input userInput {
   
   firstName: String!
 
+  username: String!
+ 
+  password: String!
+  
   lastName: String!
-
-  age: Int!
 }

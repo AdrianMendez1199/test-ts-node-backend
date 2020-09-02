@@ -15,7 +15,7 @@ export default {
      * @property {string} args.data.password 
      * @returns {Promise<User>}
      */
-    async createUser(_: void, args: { data: User }): Promise<User> {
+    async signUp(_: void, args: { data: User }): Promise<User> {
       const user = User.create(args.data);
       await user.save();
       return user;
