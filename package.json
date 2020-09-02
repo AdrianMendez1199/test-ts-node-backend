@@ -17,7 +17,7 @@
         "copy-gql": "copyfiles src/api/graphql/**/*.graphql ./dist/src/api/graphql/schemas",
         "test": "NODE_ENV=test  jest --coverage",
         "start": "ts-node index.ts",
-        "typeorm:cli": "ts-node ./node_modules/typeorm/cli"
+        "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli"
     },
     "jest": {
         "transform": {
