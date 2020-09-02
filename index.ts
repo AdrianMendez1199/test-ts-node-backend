@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server';
 import { createConnection } from 'typeorm';
 import 'reflect-metadata';
-import 'module-alias/register';
 import 'dotenv/config';
+import 'module-alias/register';
 import { typeDefs, resolvers } from '@api/graphql';
 import AuthDirective from '@api/graphql/directives/Authentication';
 
@@ -19,7 +19,7 @@ import AuthDirective from '@api/graphql/directives/Authentication';
       database: process.env.DB_NAME,
       synchronize: true,
       logging: process.env.NODE_ENV !== 'production',
-      entities: [__dirname + '/entity/*{.js,.ts}'],
+      entities: [__dirname + '/entity/*.{ts,js}'],
       extra: { max: 10, min: 1 },
     })
   } catch (error) {

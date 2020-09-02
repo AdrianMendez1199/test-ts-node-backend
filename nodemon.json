@@ -1,5 +1,5 @@
 {
     "exec": "yarn dev",
-    "watch": ["src/**", "index.ts"],
+    "watch": ["src/**", "index.ts", "entity/**", "utils/**"],
     "ext": "ts, graphql"
 }
