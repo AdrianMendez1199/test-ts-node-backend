@@ -37,7 +37,7 @@ input singinInput {
   
   username: String!
   
-  password: string!
+  password: String!
 }
 
 
